@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EE-Tools ແດຊບອດ</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Lao:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="particles-js"></div> <!-- Dynamic background -->
+
+    <div class="dashboard-container">
+        <header>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="logo-icon floating" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1 class="glitch" data-text="EE-Tools ແດຊບອດ">EE-Tools ແດຊບອດ</h1>
+            </div>
+            <p class="subtitle typing-effect">ສູນລວມເຄື່ອງມືສຳລັບວິສະວະກອນມືອາຊີບ ⚙️⚡</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active ripple" data-target="ohms-law">
+                <span class="icon">⚡</span> ກົດເກນໂອມ
+            </button>
+            <button class="tab-btn ripple" data-target="resistor-code">
+                <span class="icon">🚥</span> ໂຄດສີຕົວຕ້ານທານ
+            </button>
+            <button class="tab-btn ripple" data-target="unit-converter">
+                <span class="icon">🔄</span> ແປງຫົວໜ່ວຍ
+            </button>
+        </nav>
+
+        <main class="tab-content">
+            <!-- Ohm's Law Section -->
+            <section id="ohms-law" class="tab-pane active slide-up">
+                <h2 class="shimmer-text">ເຄື່ອງຄິດໄລ່ກົດເກນໂອມ</h2>
+                <p class="instruction">ປ້ອນພຽງ <strong>2 ຄ່າ</strong> ເພື່ອຄິດໄລ່ຄ່າອື່ນໆໂດຍອັດຕະໂນມັດ ✨</p>
+                <div class="calculator-grid">
+                    <div class="input-group slide-in-item" style="--delay: 1">
+                        <label for="voltage">ແຮງດັນ (V)</label>
+                        <div class="input-wrapper pulse-focus">
+                            <input type="number" id="voltage" step="any" placeholder="ຕ.ຢ. 12">
+                            <span class="unit">V</span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group slide-in-item" style="--delay: 2">
+                        <label for="current">ກະແສ (I)</label>
+                        <div class="input-wrapper pulse-focus">
+                            <input type="number" id="current" step="any" placeholder="ຕ.ຢ. 2">
+                            <span class="unit">A</span>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group slide-in-item" style="--delay: 3">
+                        <label for="resistance">ຄວາມຕ້ານທານ (R)</label>
+                        <div class="input-wrapper pulse-focus">
+                            <input type="number" id="resistance" step="any" placeholder="ຕ.ຢ. 6">
+                            <span class="unit">Ω</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-panel neon-border slide-in-item" style="--delay: 4">
+                    <h3>ຜົນໄດ້ຮັບມູນຄ່າ</h3>
+                    <div class="result-row">
+                        <span>ກຳລັງມວນລວມ (P):</span>
+                        <div class="power-container">
+                            <span id="power-result" class="result-value">-- W</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-row slide-in-item" style="--delay: 5">
+                    <button class="reset-btn ripple" id="reset-ohms">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        ລຶບລ້າງຂໍ້ມູນ
+                    </button>
+                </div>
+            </section>
+
+            <!-- Resistor Code Section -->
+            <section id="resistor-code" class="tab-pane slide-up">
+                <h2 class="shimmer-text">ເຄື່ອງຄິດໄລ່ແຖບສີຕົວຕ້ານທານ 4 ແຖບ</h2>
+                <div class="resistor-visual glow-effect scale-in" style="--delay: 1">
+                    <div class="resistor-body">
+                        <div class="band band-1" id="visual-band1"></div>
+                        <div class="band band-2" id="visual-band2"></div>
+                        <div class="band band-mult" id="visual-band3"></div>
+                        <div class="gap"></div>
+                        <div class="band band-tol" id="visual-band4"></div>
+                        <div class="shine"></div> <!-- Glass shine effect -->
+                    </div>
+                    <div class="wire left-wire"></div>
+                    <div class="wire right-wire"></div>
+                </div>
+
+                <div class="calculator-grid dropdown-grid">
+                    <div class="input-group slide-in-item" style="--delay: 2">
+                        <label>ແຖບ 1 (ຕົວເລກທີ 1)</label>
+                        <div class="custom-select-wrapper pulse-focus">
+                            <select id="band1" class="color-select interactive-hover">
+                                <option value="0" data-color="black">ດຳ (0)</option>
+                                <option value="1" data-color="brown" selected>ນ້ຳຕານ (1)</option>
+                                <option value="2" data-color="red">ແດງ (2)</option>
+                                <option value="3" data-color="orange">ສົ້ມ (3)</option>
+                                <option value="4" data-color="yellow">ເຫຼືອງ (4)</option>
+                                <option value="5" data-color="green">ຂຽວ (5)</option>
+                                <option value="6" data-color="blue">ຟ້າ (6)</option>
+                                <option value="7" data-color="violet">ມ່ວງ (7)</option>
+                                <option value="8" data-color="gray">ເທົາ (8)</option>
+                                <option value="9" data-color="white">ຂາວ (9)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group slide-in-item" style="--delay: 3">
+                        <label>ແຖບ 2 (ຕົວເລກທີ 2)</label>
+                        <div class="custom-select-wrapper pulse-focus">
+                            <select id="band2" class="color-select interactive-hover">
+                                <option value="0" data-color="black" selected>ດຳ (0)</option>
+                                <option value="1" data-color="brown">ນ້ຳຕານ (1)</option>
+                                <option value="2" data-color="red">ແດງ (2)</option>
+                                <option value="3" data-color="orange">ສົ້ມ (3)</option>
+                                <option value="4" data-color="yellow">ເຫຼືອງ (4)</option>
+                                <option value="5" data-color="green">ຂຽວ (5)</option>
+                                <option value="6" data-color="blue">ຟ້າ (6)</option>
+                                <option value="7" data-color="violet">ມ່ວງ (7)</option>
+                                <option value="8" data-color="gray">ເທົາ (8)</option>
+                                <option value="9" data-color="white">ຂາວ (9)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group slide-in-item" style="--delay: 4">
+                        <label>ຕົວຄູນ (Multiplier)</label>
+                        <div class="custom-select-wrapper pulse-focus">
+                            <select id="band3" class="color-select interactive-hover">
+                                <option value="1" data-color="black" selected>ດຳ (x1)</option>
+                                <option value="10" data-color="brown">ນ້ຳຕານ (x10)</option>
+                                <option value="100" data-color="red">ແດງ (x100)</option>
+                                <option value="1000" data-color="orange">ສົ້ມ (x1k)</option>
+                                <option value="10000" data-color="yellow">ເຫຼືອງ (x10k)</option>
+                                <option value="100000" data-color="green">ຂຽວ (x100k)</option>
+                                <option value="1000000" data-color="blue">ຟ້າ (x1M)</option>
+                                <option value="10000000" data-color="violet">ມ່ວງ (x10M)</option>
+                                <option value="0.1" data-color="gold">ຄຳ (x0.1)</option>
+                                <option value="0.01" data-color="silver">ເງິນ (x0.01)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group slide-in-item" style="--delay: 5">
+                        <label>ຄ່າຜິດດ່ຽງ (Tolerance)</label>
+                        <div class="custom-select-wrapper pulse-focus">
+                            <select id="band4" class="color-select interactive-hover">
+                                <option value="1" data-color="brown">ນ້ຳຕານ (±1%)</option>
+                                <option value="2" data-color="red">ແດງ (±2%)</option>
+                                <option value="0.5" data-color="green">ຂຽວ (±0.5%)</option>
+                                <option value="0.25" data-color="blue">ຟ້າ (±0.25%)</option>
+                                <option value="0.1" data-color="violet">ມ່ວງ (±0.1%)</option>
+                                <option value="5" data-color="gold" selected>ຄຳ (±5%)</option>
+                                <option value="10" data-color="silver">ເງິນ (±10%)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-panel neon-border primary-bg slide-in-item" style="--delay: 6">
+                    <h3>ຄ່າຄວາມຕ້ານທານ</h3>
+                    <div class="result-row primary-result scale-in">
+                        <span id="resistor-result">10 Ω ±5%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unit Converter Section -->
+            <section id="unit-converter" class="tab-pane slide-up">
+                <h2 class="shimmer-text">ແປງຫົວໜ່ວຍ SI</h2>
+                <div class="converter-box slide-in-item" style="--delay: 1">
+                    <div class="input-group">
+                        <label>ປະເພດຫົວໜ່ວຍ</label>
+                        <div class="custom-select-wrapper pulse-focus">
+                            <select id="metric-type" class="interactive-hover">
+                                <option value="V">ແຮງດັນ (Voltage / V)</option>
+                                <option value="A">ກະແສ (Current / A)</option>
+                                <option value="Ohm">ຄວາມຕ້ານທານ (Resistance / Ω)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="conversion-row" style="position:relative; z-index:2;">
+                        <div class="input-group">
+                            <label>ຈາກ (From)</label>
+                            <div class="unit-select-wrapper pulse-focus active-glow">
+                                <input type="number" id="convert-from-value" step="any" placeholder="0">
+                                <select id="convert-from-unit">
+                                    <option value="m">ມິນລິ (m)</option>
+                                    <option value="base" selected>ພື້ນຖານ</option>
+                                    <option value="k">ກິໂລ (k)</option>
+                                    <option value="M">ເມກາ (M)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="swap-icon">
+                            <button id="swap-units" class="ripple rotate-on-hover hover-float" aria-label="ສະຫຼັບຫົວໜ່ວຍ">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="swap-svg">
+                                    <path d="M17 3L21 7L17 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 13L7 17L3 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 7H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>ເປັນ (To)</label>
+                            <div class="unit-select-wrapper pulse-focus result-wrapper">
+                                <input type="text" id="convert-to-value" readonly placeholder="0">
+                                <select id="convert-to-unit">
+                                    <option value="m" selected>ມິນລິ (m)</option>
+                                    <option value="base">ພື້ນຖານ</option>
+                                    <option value="k">ກິໂລ (k)</option>
+                                    <option value="M">ເມກາ (M)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="fade-in" style="animation-delay: 1s">
+            <p>&copy; 2026 EE-Tools ແດຊບອດ | ສ້າງດ້ວຍ ❤️</p>
+        </footer>
+    </div>
+    
+    <!-- Particles Engine -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
